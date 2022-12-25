@@ -130,6 +130,15 @@
 
 
 
+    class 08 (laravel-courses project)
+    ================
+    * create a new laravel project
+    * create a new dbdesign on -->app.dbdesigner.net
+    * create new migration and controller and model and Schema
+    * php artisan migrate   
+
+
+
 
 
 </body>
