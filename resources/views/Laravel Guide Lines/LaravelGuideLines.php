@@ -134,8 +134,32 @@
     ================
     * create a new laravel project
     * create a new dbdesign on -->app.dbdesigner.net
-    * create new migration and controller and model and Schema
-    * php artisan migrate   
+    * php artisan make:model Name -mc --> create new migration and controller and model and Schema
+    * after create model --> php artisan migrate  
+    * create table in migration fils 
+    * create reference table in migration fils 
+    * after create table --> php artisan migrate
+
+
+    manual data add 
+    -------------
+    * data add in DatabaseSeeder.php file
+    * php artisan migrate:fresh --seed
+
+    fake data add 
+    ---------------
+    * create factory file --> php artisan make:factory CourseFactory
+    * generate fake column
+    * php artisan migrate:fresh --seed
+
+    
+    single course show
+    ---------------
+    * create a route with (id) in web.php file
+    * this route controller return specific single $id
+
+    Add table to table relation
+    --------------------------
 
 
 
