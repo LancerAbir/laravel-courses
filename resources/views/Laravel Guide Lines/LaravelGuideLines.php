@@ -160,6 +160,8 @@
 
     Add table to table relation
     --------------------------
+    * go to model file --> belongsTo attach
+    * controller file --> with('')
 
 
 

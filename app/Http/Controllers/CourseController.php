@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     public function show($id){
-        $course = Course::findOrFail($id);
+        $course = Course::with('platform')->findOrFail($id);
         return $course;
     }
 }
