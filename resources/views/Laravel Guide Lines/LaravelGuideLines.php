@@ -141,27 +141,49 @@
     * after create table --> php artisan migrate
 
 
-    manual data add 
+        manual data add 
+        -------------
+        * data add in DatabaseSeeder.php file
+        * php artisan migrate:fresh --seed
+
+        fake data add 
+        ---------------
+        * create factory file --> php artisan make:factory CourseFactory
+        * generate fake column
+        * php artisan migrate:fresh --seed
+
+        
+        single course show
+        ---------------
+        * create a route with (id) in web.php file
+        * this route controller return specific single $id
+
+        Add table to table relation
+        --------------------------
+        * go to model file --> belongsTo attach
+        * controller file --> with('')
+
+
+    class 08 (Guest teacher Harun)
+    ================
+    *create new migration schema file --> php artisan make:migration name
+    * migration schema file --> 
+      ---------------------
+        1. create new table --> Schema::create()
+        2. add column --> Schema::table()  after --> php artisan migrate
+        3. last create data delete --> php artisan migrate:rollback
+    * table relation --> $table->foreignId('user_id', )->constrained();
+
+    # relationship
     -------------
-    * data add in DatabaseSeeder.php file
-    * php artisan migrate:fresh --seed
-
-    fake data add 
-    ---------------
-    * create factory file --> php artisan make:factory CourseFactory
-    * generate fake column
-    * php artisan migrate:fresh --seed
-
+    1. One to One
+    2. One to Many
+    3. Many to Many
     
-    single course show
-    ---------------
-    * create a route with (id) in web.php file
-    * this route controller return specific single $id
-
-    Add table to table relation
-    --------------------------
-    * go to model file --> belongsTo attach
-    * controller file --> with('')
+    * fake data add factory
+        1.  create factory file --> php artisan make:factory CourseFactory
+        2.  generate fake column
+        3.  php artisan migrate:fresh --seed
 
 
 
