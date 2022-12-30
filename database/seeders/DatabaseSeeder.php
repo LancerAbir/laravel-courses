@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Author;
 use App\Models\Course;
 use App\Models\Platform;
 use App\Models\Series;
@@ -35,16 +36,23 @@ class DatabaseSeeder extends Seeder
         }
 
 
-        $topic = ["Eloquent", "Validation", "Refactoring", "Testing", "Authorization"];
-        foreach ($topic as $item) {
+        $topics = ["Eloquent", "Validation", "Refactoring", "Testing", "Authorization"];
+        foreach ($topics as $item) {
             Topic::create([
                 'name' => $item
             ]);
         }
 
-        $platform = ["Laracasts", "Laravel Daily", "Codecourse", "Spatie", "Youtube"];
-        foreach ($platform as $item) {
+        $platforms = ["Laracasts", "Laravel Daily", "Codecourse", "Spatie", "Youtube"];
+        foreach ($platforms as $item) {
             Platform::create([
+                'name' => $item
+            ]);
+        }
+
+        $authors = ["Lancer", "Abir", "Kumar"];
+        foreach ($authors as $item) {
+            Author::create([
                 'name' => $item
             ]);
         }
@@ -52,10 +60,25 @@ class DatabaseSeeder extends Seeder
 
         //Create fake 50 User 
         User::factory(50)->create();
-
+ 
 
         //Create fake 50 Course
         Course::factory(100)->create();
+
+
+        $courses = Course::all();
+        foreach ($courses as $course) {
+           // random topics array
+           $topics = Topic::all()->random(rand(1, 5))->pluck('id')->toArray();
+           $course->topics()->attach($topics);
+
+           $authors = Author::all()->random(rand(1, 3))->pluck('id')->toArray();
+           $course->authors()->attach($authors);
+
+           $series = Series::all()->random(rand(1, 6))->pluck('id')->toArray();
+           $course->series()->attach($series);
+        }
+        
 
     }
 }

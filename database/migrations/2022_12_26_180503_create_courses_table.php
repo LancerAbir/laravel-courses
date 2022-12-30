@@ -17,7 +17,8 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
-            $table->unsignedBigInteger('book')->default(0);
+            $table->unsignedBigInteger('type')->default(0)->comment( '0 = book', '1 = video');
+            $table->unsignedBigInteger('resources')->default(1)->comment( 'resources count');
             $table->unsignedBigInteger('year');
             $table->float('price')->default(0.00);
             $table->string('image', 255)->nullable();
@@ -42,6 +43,8 @@ return new class extends Migration
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('series_id');
 
+            $table->unique(['course_id', 'series_id']);
+
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('series_id')->references('id')->on('series')->onDelete('cascade');
         });
@@ -51,6 +54,8 @@ return new class extends Migration
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('topic_id');
 
+            $table->unique(['course_id', 'topic_id']);
+
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
         });
@@ -59,6 +64,8 @@ return new class extends Migration
         Schema::create('course_author', function (Blueprint $table) { 
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('author_id');
+
+            $table->unique(['course_id', 'author_id']);
 
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');

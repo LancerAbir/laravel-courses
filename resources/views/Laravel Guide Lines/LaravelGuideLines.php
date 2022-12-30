@@ -176,8 +176,8 @@
 
     # relationship
     -------------
-    1. One to One
-    2. One to Many
+    1. One to One (one model to one model connection) --> belongsTo
+    2. One to Many (one model to multiple model connection) --> belongsToMany
     3. Many to Many
     
     * fake data add factory
@@ -186,8 +186,14 @@
         3.  php artisan migrate:fresh --seed
 
 
-
-
+    class 09 
+    ================
+    * one table e multiple table add 
+        1. model filer এর সাথে অন্য model class add করা ।
+                one to one হলে belongdTo, one to many হলে belongdToMany হবে।
+        2. DatabaseSeeder.php file e multiple table attach করে দিতে হবে।
+        3. Controllers file এ গিয়ে attach হওয়া table কে চিনিয়ে দিতে হবে।
+        
 
 </body>
 </html>
